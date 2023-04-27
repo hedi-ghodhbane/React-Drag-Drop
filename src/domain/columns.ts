@@ -1,0 +1,1 @@
+export const canbanColumns = ["Backlog","Todo", "In Progress", "Testing", "Done"];
