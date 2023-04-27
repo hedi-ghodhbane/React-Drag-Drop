@@ -1,10 +1,10 @@
-import { State, Ticket } from "@/types";
+import { State, Ticket } from "@/domain/types";
 import clsx from "clsx";
 import { useDrop } from "react-dnd";
 import { TicketCard } from "./Ticket";
 import { PropsWithChildren } from "react";
 
-export function CanbanColumn({ columnState,children,moveTicket }: PropsWithChildren<{ columnState: State,moveTicket:(ticket:Ticket,columnState:State)=>void}>) {
+export function CanbanColumn({ columnState,children,moveTicket,tickets }: PropsWithChildren<{ columnState: State,tickets:Ticket[],moveTicket:(ticket:Ticket,columnState:State)=>void}>) {
     const [{ isOver, canDrop }, drop] = useDrop<
     Ticket,
     void,
@@ -26,7 +26,7 @@ export function CanbanColumn({ columnState,children,moveTicket }: PropsWithChild
       })}>
         <p className='h-10 flex items-center justify-center text-xl bg-slate-100 font-medium'>{columnState}</p>
         <div className={clsx("rounded-xl flex flex-col gap-2 p-2")}>
-            {children}
+            {tickets.map(ticket=><TicketCard key={ticket.id} ticket={ticket}/>)}
         </div>
       </div>
     );

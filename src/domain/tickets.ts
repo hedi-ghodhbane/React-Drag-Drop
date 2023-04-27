@@ -1,4 +1,4 @@
-import { Ticket } from "@/types";
+import { Ticket } from "@/domain/types";
 
 export const tickets:Array<Ticket> = [
     {

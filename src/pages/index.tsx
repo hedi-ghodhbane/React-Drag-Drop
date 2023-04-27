@@ -4,7 +4,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { canbanColumns } from "@/domain/columns";
 import { CanbanColumn } from "@/components/Column";
 import { useCallback, useReducer } from "react";
-import { State, Ticket } from "@/types";
+import { State, Ticket } from "@/domain/types";
 import { TicketCard } from "@/components/Ticket";
 import { tickets } from "@/domain/tickets";
 import { useHandleTicketsState } from "@/hooks/useHandleTicketsState";
@@ -21,9 +21,11 @@ export default function Home() {
       className="absolute bottom-4 left-4 rounded-lg bg-slate-950 text-white px-4 py-2">Reset</button>
             <div className="flex w-full gap-4">
         {canbanColumns.map((columnState) => (
-          <CanbanColumn key={columnState} moveTicket={moveTicket} columnState={columnState as State} >
-          {state.tickets[columnState as State].map(ticket=><TicketCard key={ticket.id} ticket={ticket}/>)}
-          </CanbanColumn>
+          <CanbanColumn 
+             tickets={state.tickets[columnState as State]} 
+             key={columnState} 
+             moveTicket={moveTicket} 
+             columnState={columnState as State} />
         ))}
       </div>
     </main>

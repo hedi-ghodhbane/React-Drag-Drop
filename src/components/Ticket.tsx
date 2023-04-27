@@ -1,4 +1,4 @@
-import { Ticket } from "@/types";
+import { Ticket } from "@/domain/types";
 import clsx from "clsx";
 import { useDrag } from "react-dnd";
 

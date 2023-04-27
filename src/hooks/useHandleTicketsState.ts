@@ -1,5 +1,5 @@
 import { tickets } from "@/domain/tickets";
-import { State, Ticket } from "@/types";
+import { State, Ticket } from "@/domain/types";
 import { useCallback, useReducer } from "react";
 
 type Action =
